@@ -1,0 +1,20 @@
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import { inspectAttr } from 'kimi-plugin-inspect-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  base: './',
+  plugins: [inspectAttr(), react()],
+  server: {
+    port: 5000,
+    host: true,
+    allowedHosts: true, // required for Replit's proxied preview (dev only)
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
